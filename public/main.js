@@ -16,4 +16,28 @@ angular
     $scope.artists = response.data.results;
   })
 
+  $scope.loadArtists = (url) =>{
+    console.log("loading artists", url)
+    $http({
+      method:"GET",
+      url:url
+    }).then (response => {
+      console.log("loading artists", response)
+      console.log(response.data);
+      $scope.artists = response.data;
+    });
+  }
+ 
+  $scope.loadImage = (url) =>{
+    console.log("loading image", url)
+    $http({
+      method:"GET",
+      url:url
+    }).then (response => {
+      console.log("loading image", response)
+      console.log(response.data);
+      $scope.image = response.data;
+    });
+  }
+
 }])
