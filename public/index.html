@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="./screen.css">
   </head>
   <body ng-app="mainApp" ng-controller="mainController">
-    <h1>Top Artists</h1>
-
+    <h1>Top 50 Artists</h1>
+    <h2>Artist name, image, listeners and playcount</h2>
     <section class="artists">
-      <header>{{artists.name}}</header>
+      <header>{{ artists.name }}</header>
       <section>
-        <header>Artists</header>
         <section ng-repeat="artist in artists track by $index">
-          <button ng-click="loadArtists(artist)">{{artist.name}}</button>
+          <button ng-click="loadArtists(artist)">{{ artist.name }}</button>
+          <img ng-src="{{ artist.image[0]['#text'] }}" />
+          <span>{{ artist.listeners }}</span>
+          <span>{{ artist.playcount }}</span> 
         </section>
       </section>
     </section>
-
-
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="./main.js" charset="utf-8"></script>
   </body>
-</html>
+  
+  </html>

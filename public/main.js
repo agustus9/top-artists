@@ -3,41 +3,29 @@ const BASE_URL = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&a
 
 
 angular
-.module("mainApp", [])
-.controller("mainController",[`$scope`, `$http`, ($scope, $http) => {
-  $scope.currentArtist =
+  .module("mainApp", [])
+  .controller("mainController", [`$scope`, `$http`, ($scope, $http) => {
+    $scope.currentArtist =
 
-  $http({
-    method:"GET",
-    url:BASE_URL
-  }).then(response => {
-    console.log(response);
-    console.log(response.data);
-    $scope.artists = response.data.results;
-  })
+      $http({
+        method: "GET",
+        url: BASE_URL
+      }).then(response => {
+        console.log(response);
+        console.log(response.data);
+        $scope.artists = response.data.artists.artist;
+      });
 
-  $scope.loadArtists = (url) =>{
-    console.log("loading artists", url)
-    $http({
-      method:"GET",
-      url:url
-    }).then (response => {
-      console.log("loading artists", response)
-      console.log(response.data);
-      $scope.artists = response.data;
-    });
-  }
- 
-  $scope.loadImage = (url) =>{
-    console.log("loading image", url)
-    $http({
-      method:"GET",
-      url:url
-    }).then (response => {
-      console.log("loading image", response)
-      console.log(response.data);
-      $scope.image = response.data;
-    });
-  }
+    $scope.loadArtists = (url) => {
+      console.log("loading artists", url)
+      $http({
+        method: "GET",
+        url: url
+      }).then(response => {
+        console.log("loading artists", response)
+        console.log(response.data);
+        $scope.artists = response.data.artists.artist;
+      });
+    }
 
-}])
+  }]);
